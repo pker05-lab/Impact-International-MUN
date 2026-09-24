@@ -15,10 +15,28 @@ document.querySelectorAll(".nav a").forEach(link => {
 
 const documents = [
   {
-    name: "Conference Documents",
+    name: "Conference Information",
     type: "TXT",
     path: "documents/text.txt",
-    description: "Season I document placeholder"
+    description: "Season I"
+  }
+    {
+    name: "Working Paper Template",
+    type: "PDF",
+    path: "documents/Templates/IIMUN S1 Working Paper Template.pdf",
+    description: "Template for submitting the Working Paper"
+  }
+    {
+    name: "Position Paper Template",
+    type: "PDF",
+    path: "documents/Templates/IIMUN S1 Working Paper Template.pdf",
+    description: "Template for submitting the Position Paper"
+  }
+    {
+    name: "IIMUN",
+    type: "PDF",
+    path: "documents/Templates/IIMUN guide.pdf",
+    description: "The Official Guide to IIMUN"
   }
 ];
 
