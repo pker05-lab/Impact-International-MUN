@@ -19,20 +19,20 @@ const documents = [
     type: "TXT",
     path: "documents/text.txt",
     description: "Season I"
-  }
-    {
+  },
+  {
     name: "Working Paper Template",
     type: "PDF",
     path: "documents/Templates/IIMUN S1 Working Paper Template.pdf",
     description: "Template for submitting the Working Paper"
-  }
-    {
+  },
+  {
     name: "Position Paper Template",
     type: "PDF",
     path: "documents/Templates/IIMUN S1 Working Paper Template.pdf",
     description: "Template for submitting the Position Paper"
-  }
-    {
+  },
+  {
     name: "IIMUN",
     type: "PDF",
     path: "documents/Templates/IIMUN guide.pdf",
@@ -43,25 +43,32 @@ const documents = [
 const list = document.getElementById("documents-list");
 const count = document.getElementById("document-count");
 
-count.textContent = `${documents.length} document${documents.length === 1 ? "" : "s"}`;
+if (count) {
+  count.textContent = `${documents.length} document${documents.length === 1 ? "" : "s"}`;
+}
 
-documents.forEach(doc => {
-  const row = document.createElement("div");
-  row.className = "document-row";
-  row.innerHTML = `
-    <div class="document-info">
-      <div class="document-icon">${doc.type}</div>
-      <div>
-        <div class="document-name">${doc.name}</div>
-        <span class="document-type">${doc.description}</span>
+if (list) {
+  documents.forEach(doc => {
+    const row = document.createElement("div");
+    row.className = "document-row";
+    row.innerHTML = `
+      <div class="document-info">
+        <div class="document-icon">${doc.type}</div>
+        <div>
+          <div class="document-name">${doc.name}</div>
+          <span class="document-type">${doc.description}</span>
+        </div>
       </div>
-    </div>
-    <a class="document-open" href="${doc.path}" target="_blank" rel="noopener">Open ↗</a>
-  `;
-  list.appendChild(row);
-});
+      <a class="document-open" href="${encodeURI(doc.path)}" target="_blank" rel="noopener">Open ↗</a>
+    `;
+    list.appendChild(row);
+  });
+}
 
-document.getElementById("year").textContent = new Date().getFullYear();
+const yearEl = document.getElementById("year");
+if (yearEl) {
+  yearEl.textContent = new Date().getFullYear();
+}
 
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
